@@ -5,7 +5,7 @@ function getCharacter(code) {
 
 // 入力サンプル文章 
 let sample_texts = [
-  "pack my box with five dozen liquor jugs",
+  "learning to type with hand gestures is fun and challenging",
 ];
 
 // ゲームの状態を管理する変数
@@ -45,10 +45,12 @@ function setup() {
       }
       let gestureLabel = results.gestures[0][0].categoryName;
 
+      if (gestureLabel === "none") return;
+
       let now = millis();
 
       if (gestureLabel === lastChar) {
-        if (now - lastCharTime > 550) {
+        if (now - lastCharTime > 425) {
           // 0.7秒以上同じジェスチャーなら文字として入力
           let charToType = getCharacter(gestureLabel);
           typeChar(charToType);
